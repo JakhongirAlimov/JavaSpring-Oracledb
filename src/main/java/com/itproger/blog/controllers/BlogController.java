@@ -19,12 +19,14 @@ public class BlogController {
     @Autowired
     private PostRepository postRepository;
 
+
     @GetMapping("/blog")
     public String blogMain(Model model) {
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
         return "blog-main";
     }
+
 
     @GetMapping("/blog/add")
     public String blogAdd(Model model) {
@@ -79,5 +81,6 @@ public class BlogController {
         postRepository.delete(post);
         return "redirect:/blog";
     }
+
 }
 
